@@ -108,8 +108,8 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "ClassDiagramMakerUserControl";
-            Load += DataBaseInit;
             Size = new Size(1584, 861);
+            Load += ClassDiagramMakerUserControl_Load;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }

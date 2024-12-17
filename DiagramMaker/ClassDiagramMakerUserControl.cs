@@ -10,6 +10,7 @@ namespace DiagramMaker
     public partial class ClassDiagramMakerUserControl : UserControl
     {
         private int _canva_id;
+        private PaintEventHandler _paintHandler;
 
         public ClassDiagramMakerUserControl(int canva_id)
         {
@@ -17,10 +18,17 @@ namespace DiagramMaker
             _canva_id = canva_id;
         }
 
-        private void DataBaseInit(object sender, EventArgs e)
+        private void ClassDiagramMakerUserControl_Load(object sender, EventArgs e)
         {
+            DataBaseInit();
+        }
+
+        private void DataBaseInit()
+        {
+            panel2.Controls.Clear();
+            panel2.Paint -= _paintHandler;
             // 從資料庫取得 class 資料
-            List<ClassModel> classes = GetClass();
+            List<ClassModel> classes = GetClass(_canva_id);
             List<ClassAttributeModel> attributes = GetClassAttributes();
             List<ClassMethodModel> methods = GetClassMethods();
             List<RelationshipModel> relationships = GetRelationships();
@@ -40,10 +48,10 @@ namespace DiagramMaker
             foreach (var classItem in classes)
             {
                 // 建立 classPanel 代表當前類別
-                Panel classPanel = new Panel{BorderStyle = BorderStyle.FixedSingle, Size = new Size(200, 200),BackColor = Color.LightGray};
+                Panel classPanel = new Panel { BorderStyle = BorderStyle.FixedSingle, Size = new Size(200, 200), BackColor = Color.LightGray };
 
                 // Class 名稱定義
-                Label classNameLabel = new Label{Text = classItem.Name,Font = new Font("Arial", 10, FontStyle.Bold),Location = new Point(5, 5),AutoSize = true};
+                Label classNameLabel = new Label { Text = classItem.Name, Font = new Font("Arial", 10, FontStyle.Bold), Location = new Point(5, 5), AutoSize = true };
 
                 // 分隔線定義
                 Label separatorLabel = new Label { BorderStyle = BorderStyle.Fixed3D, Location = new Point(0, 25), Size = new Size(classPanel.Width, 2) };
@@ -52,10 +60,10 @@ namespace DiagramMaker
                 Label separatorLabel2 = new Label { BorderStyle = BorderStyle.Fixed3D, Location = new Point(0, 117), Size = new Size(classPanel.Width, 2) };
 
                 // 屬性區域容器定義
-                Panel attributesPanel = new Panel{Location = new Point(0, 30),Size = new Size(classPanel.Width, (classPanel.Height - separatorLabel.Height - classNameLabel.Height) / 2), AutoScroll = true };// 分配固定高度給屬性
+                Panel attributesPanel = new Panel { Location = new Point(0, 30), Size = new Size(classPanel.Width, (classPanel.Height - separatorLabel.Height - classNameLabel.Height) / 2), AutoScroll = true };// 分配固定高度給屬性
 
                 // 方法區域容器定義
-                Panel methodsPanel = new Panel{Location = new Point(0, 120),Size = new Size(classPanel.Width, (classPanel.Height - separatorLabel.Height - classNameLabel.Height) / 2),AutoScroll = true };
+                Panel methodsPanel = new Panel { Location = new Point(0, 120), Size = new Size(classPanel.Width, (classPanel.Height - separatorLabel.Height - classNameLabel.Height) / 2), AutoScroll = true };
 
                 // 屬性區域封裝
                 int attributeYOffset = 0;
@@ -97,13 +105,14 @@ namespace DiagramMaker
                 classPanel.Controls.Add(classNameLabel);
                 classPanel.Controls.Add(separatorLabel);
                 classPanel.Controls.Add(attributesPanel);
-                classPanel.Controls.Add(separatorLabel2); 
+                classPanel.Controls.Add(separatorLabel2);
                 classPanel.Controls.Add(methodsPanel);
 
                 classPanels[classItem.ClassId] = classPanel;
             }
             ApplyTreeLayout(classPanels);
-            panel2.Paint += (sender, e) => DrawRelationships(e.Graphics, classPanels, relationships);
+            _paintHandler = (sender, e) => DrawRelationships(e.Graphics, classPanels, relationships);
+            panel2.Paint += _paintHandler;
             panel2.Invalidate(); // 觸發重繪
         }
 
@@ -139,7 +148,7 @@ namespace DiagramMaker
                     start = AdjustEdgePoint(start, edgeA, index, relationships.Count);
                     end = AdjustEdgePoint(end, edgeB, index, relationships.Count);
 
-                    if(relationship.RelationshipType != 1 && relationship.RelationshipType != 2)
+                    if (relationship.RelationshipType != 1 && relationship.RelationshipType != 2)
                     {
                         switch (edgeB)
                         {
@@ -257,7 +266,7 @@ namespace DiagramMaker
 
         private Point AdjustEdgePoint(Point edgePoint, string edge, int index, int total)
         {
-            int offset = 20; 
+            int offset = 20;
 
             if (total > 1)
             {
@@ -401,24 +410,28 @@ namespace DiagramMaker
         {
             AddClassForm addClassForm = new AddClassForm(_canva_id);
             addClassForm.ShowDialog();
+            DataBaseInit();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             DelClassForm delClassForm = new DelClassForm(_canva_id);
             delClassForm.ShowDialog();
+            DataBaseInit();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             AddRelationshipForm addRelationshipForm = new AddRelationshipForm(_canva_id);
             addRelationshipForm.ShowDialog();
+            DataBaseInit();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             DelRelationshipForm delRelationshipForm = new DelRelationshipForm(_canva_id);
             delRelationshipForm.ShowDialog();
+            DataBaseInit();
         }
     }
 }

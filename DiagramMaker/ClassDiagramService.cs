@@ -378,9 +378,9 @@ namespace DiagramMaker
             public int ClassCanvaId { get; set; }
         }
 
-        internal static List<ClassModel> GetClass()
+        internal static List<ClassModel> GetClass(int canvaId)
         {
-            string selectQuery = "SELECT class_id, name, class_canva_id FROM class;";
+            string selectQuery = "SELECT class_id, name, class_canva_id FROM class where class_canva_id = @canva_id;";
             List<ClassModel> classes = new List<ClassModel>();
 
             try
@@ -391,6 +391,7 @@ namespace DiagramMaker
 
                     using (MySqlCommand command = new MySqlCommand(selectQuery, connection))
                     {
+                        command.Parameters.AddWithValue("@canva_id", canvaId);
                         using (MySqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
