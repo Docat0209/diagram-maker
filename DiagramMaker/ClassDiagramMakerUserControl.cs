@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Reflection;
 using System.Windows.Forms;
 using static DiagramMaker.ClassDiagramService;
@@ -74,7 +75,7 @@ namespace DiagramMaker
                     {
                         Label attributeLabel = new Label
                         {
-                            Text = $"{attribute.Modifiers} {attribute.DataType} {attribute.Name}",
+                            Text = $"{attribute.Modifiers} {attribute.Name}:{attribute.DataType}",
                             Font = new Font("Arial", 9),
                             Location = new Point(5, attributeYOffset),
                             AutoSize = true
@@ -404,8 +405,25 @@ namespace DiagramMaker
             }
         }
 
+        private static void SavePanelAsPng(Panel panel)
+        {
+            using (Bitmap bitmap = new Bitmap(panel.Width, panel.Height))
+            {
+                panel.DrawToBitmap(bitmap, new Rectangle(0, 0, panel.Width, panel.Height));
 
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "PNG Image|*.png";
+                    saveFileDialog.Title = "Save Panel as PNG";
 
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK && !string.IsNullOrWhiteSpace(saveFileDialog.FileName))
+                    {
+                        bitmap.Save(saveFileDialog.FileName, ImageFormat.Png);
+                        MessageBox.Show("Panel saved as PNG successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             AddClassForm addClassForm = new AddClassForm(_canva_id);
@@ -432,6 +450,11 @@ namespace DiagramMaker
             DelRelationshipForm delRelationshipForm = new DelRelationshipForm(_canva_id);
             delRelationshipForm.ShowDialog();
             DataBaseInit();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            SavePanelAsPng(panel2);
         }
     }
 }

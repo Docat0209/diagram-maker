@@ -51,7 +51,7 @@ namespace DiagramMaker
                 string parameter = row.Cells["method_parameter"].Value?.ToString();
                 string returnType = row.Cells["method_returnType"].Value?.ToString();
 
-                if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(modifiers) && !string.IsNullOrEmpty(parameter)  && !string.IsNullOrEmpty(returnType))
+                if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(modifiers)  && !string.IsNullOrEmpty(returnType))
                 {
                     ClassDiagramService.AddClassMethod(modifiers, name, parameter , returnType, classId);
                 }
