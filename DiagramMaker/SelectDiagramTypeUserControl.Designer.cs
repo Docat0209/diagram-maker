@@ -36,19 +36,19 @@
             label1 = new Label();
             panel1 = new Panel();
             createNewClassButton = new Button();
+            panel7 = new Panel();
+            classNameTextBox = new TextBox();
+            label3 = new Label();
             groupBox2 = new GroupBox();
-            button3 = new Button();
+            openOldObjectButton = new Button();
             panel4 = new Panel();
             objectComboBox = new ComboBox();
             panel5 = new Panel();
             label2 = new Label();
             panel6 = new Panel();
-            button4 = new Button();
-            classNameTextBox = new TextBox();
-            panel7 = new Panel();
-            label3 = new Label();
+            createNewObjectButton = new Button();
             panel8 = new Panel();
-            textBox1 = new TextBox();
+            objectNameTextBox = new TextBox();
             label4 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -138,17 +138,43 @@
             createNewClassButton.UseVisualStyleBackColor = true;
             createNewClassButton.Click += createNewClassButton_Click;
             // 
+            // panel7
+            // 
+            panel7.Dock = DockStyle.Top;
+            panel7.Location = new Point(3, 57);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(236, 10);
+            panel7.TabIndex = 8;
+            // 
+            // classNameTextBox
+            // 
+            classNameTextBox.Dock = DockStyle.Top;
+            classNameTextBox.Location = new Point(3, 34);
+            classNameTextBox.Name = "classNameTextBox";
+            classNameTextBox.Size = new Size(236, 23);
+            classNameTextBox.TabIndex = 7;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Dock = DockStyle.Top;
+            label3.Location = new Point(3, 19);
+            label3.Name = "label3";
+            label3.Size = new Size(58, 15);
+            label3.TabIndex = 9;
+            label3.Text = "新檔檔名:";
+            // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(button3);
+            groupBox2.Controls.Add(openOldObjectButton);
             groupBox2.Controls.Add(panel4);
             groupBox2.Controls.Add(objectComboBox);
             groupBox2.Controls.Add(panel5);
             groupBox2.Controls.Add(label2);
             groupBox2.Controls.Add(panel6);
-            groupBox2.Controls.Add(button4);
+            groupBox2.Controls.Add(createNewObjectButton);
             groupBox2.Controls.Add(panel8);
-            groupBox2.Controls.Add(textBox1);
+            groupBox2.Controls.Add(objectNameTextBox);
             groupBox2.Controls.Add(label4);
             groupBox2.Location = new Point(323, 42);
             groupBox2.Name = "groupBox2";
@@ -157,15 +183,16 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Object Diagram";
             // 
-            // button3
+            // openOldObjectButton
             // 
-            button3.Dock = DockStyle.Top;
-            button3.Location = new Point(3, 198);
-            button3.Name = "button3";
-            button3.Size = new Size(236, 42);
-            button3.TabIndex = 4;
-            button3.Text = "開啟舊檔";
-            button3.UseVisualStyleBackColor = true;
+            openOldObjectButton.Dock = DockStyle.Top;
+            openOldObjectButton.Location = new Point(3, 198);
+            openOldObjectButton.Name = "openOldObjectButton";
+            openOldObjectButton.Size = new Size(236, 42);
+            openOldObjectButton.TabIndex = 4;
+            openOldObjectButton.Text = "開啟舊檔";
+            openOldObjectButton.UseVisualStyleBackColor = true;
+            openOldObjectButton.Click += openOldObjectButton_Click;
             // 
             // panel4
             // 
@@ -210,41 +237,16 @@
             panel6.Size = new Size(236, 34);
             panel6.TabIndex = 2;
             // 
-            // button4
+            // createNewObjectButton
             // 
-            button4.Dock = DockStyle.Top;
-            button4.Location = new Point(3, 67);
-            button4.Name = "button4";
-            button4.Size = new Size(236, 39);
-            button4.TabIndex = 0;
-            button4.Text = "開啟新檔";
-            button4.UseVisualStyleBackColor = true;
-            // 
-            // classNameTextBox
-            // 
-            classNameTextBox.Dock = DockStyle.Top;
-            classNameTextBox.Location = new Point(3, 34);
-            classNameTextBox.Name = "classNameTextBox";
-            classNameTextBox.Size = new Size(236, 23);
-            classNameTextBox.TabIndex = 7;
-            // 
-            // panel7
-            // 
-            panel7.Dock = DockStyle.Top;
-            panel7.Location = new Point(3, 57);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(236, 10);
-            panel7.TabIndex = 8;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Dock = DockStyle.Top;
-            label3.Location = new Point(3, 19);
-            label3.Name = "label3";
-            label3.Size = new Size(58, 15);
-            label3.TabIndex = 9;
-            label3.Text = "新檔檔名:";
+            createNewObjectButton.Dock = DockStyle.Top;
+            createNewObjectButton.Location = new Point(3, 67);
+            createNewObjectButton.Name = "createNewObjectButton";
+            createNewObjectButton.Size = new Size(236, 39);
+            createNewObjectButton.TabIndex = 0;
+            createNewObjectButton.Text = "開啟新檔";
+            createNewObjectButton.UseVisualStyleBackColor = true;
+            createNewObjectButton.Click += createNewObjectButton_Click;
             // 
             // panel8
             // 
@@ -254,13 +256,13 @@
             panel8.Size = new Size(236, 10);
             panel8.TabIndex = 11;
             // 
-            // textBox1
+            // objectNameTextBox
             // 
-            textBox1.Dock = DockStyle.Top;
-            textBox1.Location = new Point(3, 34);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(236, 23);
-            textBox1.TabIndex = 10;
+            objectNameTextBox.Dock = DockStyle.Top;
+            objectNameTextBox.Location = new Point(3, 34);
+            objectNameTextBox.Name = "objectNameTextBox";
+            objectNameTextBox.Size = new Size(236, 23);
+            objectNameTextBox.TabIndex = 10;
             // 
             // label4
             // 
@@ -299,18 +301,18 @@
         private Panel panel2;
         private Label label1;
         private GroupBox groupBox2;
-        private Button button3;
+        private Button openOldObjectButton;
         private Panel panel4;
         private ComboBox objectComboBox;
         private Panel panel5;
         private Label label2;
         private Panel panel6;
-        private Button button4;
+        private Button createNewObjectButton;
         private Panel panel7;
         private TextBox classNameTextBox;
         private Label label3;
         private Panel panel8;
-        private TextBox textBox1;
+        private TextBox objectNameTextBox;
         private Label label4;
     }
 }

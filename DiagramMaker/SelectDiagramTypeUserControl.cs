@@ -25,6 +25,7 @@ namespace DiagramMaker
         private void SelectDiagramTypeUserControl_Load(object sender, EventArgs e)
         {
             LoadClassComboBoxData();
+            LoadObjectComboBoxData();
         }
 
         private void LoadClassComboBoxData()
@@ -48,13 +49,33 @@ namespace DiagramMaker
             }
         }
 
+        private void LoadObjectComboBoxData()
+        {
+            try
+            {
+                var data = ObjectDiagramService.GetObjectCanvaByUserId(_userId);
+                objectComboBox.Items.Clear();
+
+                foreach (var item in data)
+                {
+                    objectComboBox.Items.Add(new { item.Id, item.Name });
+                }
+
+                objectComboBox.DisplayMember = "Name";
+                objectComboBox.ValueMember = "Id";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"加載資料時發生錯誤：{ex.Message}");
+            }
+        }
+
         private void openOldClassButton_Click(object sender, EventArgs e)
         {
             if (classComboBox.SelectedItem != null)
             {
                 dynamic selectedItem = classComboBox.SelectedItem;
                 int selectedId = selectedItem.Id;
-                string selectedName = selectedItem.Name;
                 ClassDiagramMakerUserControl userControl = new ClassDiagramMakerUserControl(selectedId);
                 _form.ChangeUserControl(userControl);
             }
@@ -66,9 +87,31 @@ namespace DiagramMaker
 
         private void createNewClassButton_Click(object sender, EventArgs e)
         {
-            int canvaId = ClassDiagramService.CreateNewClassCanva(classNameTextBox.Text , _userId);
+            int canvaId = ClassDiagramService.CreateNewClassCanva(classNameTextBox.Text, _userId);
             ClassDiagramMakerUserControl userControl = new ClassDiagramMakerUserControl(canvaId);
             _form.ChangeUserControl(userControl);
+        }
+
+        private void createNewObjectButton_Click(object sender, EventArgs e)
+        {
+            int canvaId = ObjectDiagramService.CreateNewObjectCanva(objectNameTextBox.Text, _userId);
+            ObjectDiagramMakerUserControl userControl = new ObjectDiagramMakerUserControl(canvaId);
+            _form.ChangeUserControl(userControl);
+        }
+
+        private void openOldObjectButton_Click(object sender, EventArgs e)
+        {
+            if (objectComboBox.SelectedItem != null)
+            {
+                dynamic selectedItem = objectComboBox.SelectedItem;
+                int selectedId = selectedItem.Id;
+                ObjectDiagramMakerUserControl userControl = new ObjectDiagramMakerUserControl(selectedId);
+                _form.ChangeUserControl(userControl);
+            }
+            else
+            {
+                MessageBox.Show("請先選擇一個項目！");
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace DiagramMaker
 {
-    partial class DelRelationshipForm
+    partial class DelLinkForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,48 +29,48 @@
         private void InitializeComponent()
         {
             delButton = new Button();
-            relationshipComboBox = new ComboBox();
+            linkComboBox = new ComboBox();
             label1 = new Label();
             SuspendLayout();
             // 
             // delButton
             // 
-            delButton.Location = new Point(12, 57);
+            delButton.Location = new Point(12, 51);
             delButton.Name = "delButton";
-            delButton.Size = new Size(391, 61);
-            delButton.TabIndex = 5;
+            delButton.Size = new Size(353, 61);
+            delButton.TabIndex = 8;
             delButton.Text = "刪除";
             delButton.UseVisualStyleBackColor = true;
             delButton.Click += delButton_Click;
             // 
-            // relationshipComboBox
+            // linkComboBox
             // 
-            relationshipComboBox.FormattingEnabled = true;
-            relationshipComboBox.Location = new Point(117, 18);
-            relationshipComboBox.Name = "relationshipComboBox";
-            relationshipComboBox.Size = new Size(286, 23);
-            relationshipComboBox.TabIndex = 4;
+            linkComboBox.FormattingEnabled = true;
+            linkComboBox.Location = new Point(79, 12);
+            linkComboBox.Name = "linkComboBox";
+            linkComboBox.Size = new Size(286, 23);
+            linkComboBox.TabIndex = 7;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 21);
+            label1.Location = new Point(12, 15);
             label1.Name = "label1";
-            label1.Size = new Size(99, 15);
-            label1.TabIndex = 3;
-            label1.Text = "選擇Relationship:";
+            label1.Size = new Size(56, 15);
+            label1.TabIndex = 6;
+            label1.Text = "選擇Link:";
             // 
-            // DelRelationshipForm
+            // DelLinkForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(424, 144);
+            ClientSize = new Size(385, 135);
             Controls.Add(delButton);
-            Controls.Add(relationshipComboBox);
+            Controls.Add(linkComboBox);
             Controls.Add(label1);
-            Name = "DelRelationshipForm";
-            Text = "DelRelationshipForm";
-            Load += DelRelationshipForm_Load;
+            Name = "DelLinkForm";
+            Text = "DelLinkForm";
+            Load += DelLinkForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -78,7 +78,7 @@
         #endregion
 
         private Button delButton;
-        private ComboBox relationshipComboBox;
+        private ComboBox linkComboBox;
         private Label label1;
     }
 }

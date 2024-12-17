@@ -90,6 +90,7 @@
             passwordTextBox.Name = "passwordTextBox";
             passwordTextBox.Size = new Size(189, 23);
             passwordTextBox.TabIndex = 3;
+            passwordTextBox.Text = "0000";
             // 
             // label2
             // 
@@ -106,6 +107,7 @@
             accountTextBox.Name = "accountTextBox";
             accountTextBox.Size = new Size(189, 23);
             accountTextBox.TabIndex = 1;
+            accountTextBox.Text = "0000";
             // 
             // label1
             // 

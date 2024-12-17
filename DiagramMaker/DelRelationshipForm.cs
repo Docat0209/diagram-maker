@@ -46,11 +46,6 @@ namespace DiagramMaker
         {
             public int Id1 { get; set; }
             public int Id2 { get; set; }
-
-            public override string ToString()
-            {
-                return $"({Id1}, {Id2})";
-            }
         }
         private void LoadRelationshipComboBoxData()
         {

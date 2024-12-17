@@ -11,7 +11,7 @@ namespace DiagramMaker
 {
     internal class ClassDiagramService
     {
-        static string connectionString = "Server=localhost;Database=diagrammaker;User ID=root;Password=v623940z;";
+        static string connectionString = "Server=localhost;Database=diagrammaker;User ID=root;Password=0000;";
         internal static List<(int Id, string Name)> GetClassCanvaByUserId(int userId)
         {
             var data = new List<(int Id, string Name)>();
@@ -220,7 +220,7 @@ namespace DiagramMaker
                 throw;
             }
 
-            string insertQuery3 = "DELETE FROM class WHERE class_id = @classId;";
+            string insertQuery3 = "DELETE FROM relationship WHERE classA_id = @classId OR classB_id = @classId;";
 
             try
             {
@@ -229,6 +229,27 @@ namespace DiagramMaker
                     connection.Open();
 
                     using (MySqlCommand command = new MySqlCommand(insertQuery3, connection))
+                    {
+                        command.Parameters.AddWithValue("@classId", classId);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+            string insertQuery4 = "DELETE FROM class WHERE class_id = @classId;";
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (MySqlCommand command = new MySqlCommand(insertQuery4, connection))
                     {
                         command.Parameters.AddWithValue("@classId", classId);
 

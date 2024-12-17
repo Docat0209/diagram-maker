@@ -1,6 +1,6 @@
 ﻿namespace DiagramMaker
 {
-    partial class DelRelationshipForm
+    partial class DelObjectForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,48 +29,48 @@
         private void InitializeComponent()
         {
             delButton = new Button();
-            relationshipComboBox = new ComboBox();
+            objectComboBox = new ComboBox();
             label1 = new Label();
             SuspendLayout();
             // 
             // delButton
             // 
-            delButton.Location = new Point(12, 57);
+            delButton.Location = new Point(12, 53);
             delButton.Name = "delButton";
-            delButton.Size = new Size(391, 61);
+            delButton.Size = new Size(233, 61);
             delButton.TabIndex = 5;
             delButton.Text = "刪除";
             delButton.UseVisualStyleBackColor = true;
             delButton.Click += delButton_Click;
             // 
-            // relationshipComboBox
+            // objectComboBox
             // 
-            relationshipComboBox.FormattingEnabled = true;
-            relationshipComboBox.Location = new Point(117, 18);
-            relationshipComboBox.Name = "relationshipComboBox";
-            relationshipComboBox.Size = new Size(286, 23);
-            relationshipComboBox.TabIndex = 4;
+            objectComboBox.FormattingEnabled = true;
+            objectComboBox.Location = new Point(87, 14);
+            objectComboBox.Name = "objectComboBox";
+            objectComboBox.Size = new Size(158, 23);
+            objectComboBox.TabIndex = 4;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 21);
+            label1.Location = new Point(12, 17);
             label1.Name = "label1";
-            label1.Size = new Size(99, 15);
+            label1.Size = new Size(69, 15);
             label1.TabIndex = 3;
-            label1.Text = "選擇Relationship:";
+            label1.Text = "選擇Object:";
             // 
-            // DelRelationshipForm
+            // DelObjectForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(424, 144);
+            ClientSize = new Size(261, 130);
             Controls.Add(delButton);
-            Controls.Add(relationshipComboBox);
+            Controls.Add(objectComboBox);
             Controls.Add(label1);
-            Name = "DelRelationshipForm";
-            Text = "DelRelationshipForm";
-            Load += DelRelationshipForm_Load;
+            Name = "DelObjectForm";
+            Text = "DelObjectForm";
+            Load += DelObjectForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -78,7 +78,7 @@
         #endregion
 
         private Button delButton;
-        private ComboBox relationshipComboBox;
+        private ComboBox objectComboBox;
         private Label label1;
     }
 }
