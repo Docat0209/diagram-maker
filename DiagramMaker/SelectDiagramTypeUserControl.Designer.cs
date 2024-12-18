@@ -50,6 +50,7 @@
             panel8 = new Panel();
             objectNameTextBox = new TextBox();
             label4 = new Label();
+            panel9 = new Panel();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -66,7 +67,7 @@
             groupBox1.Controls.Add(panel7);
             groupBox1.Controls.Add(classNameTextBox);
             groupBox1.Controls.Add(label3);
-            groupBox1.Location = new Point(54, 42);
+            groupBox1.Location = new Point(13, 15);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(242, 253);
             groupBox1.TabIndex = 4;
@@ -100,6 +101,7 @@
             classComboBox.Name = "classComboBox";
             classComboBox.Size = new Size(236, 23);
             classComboBox.TabIndex = 1;
+            classComboBox.SelectedIndexChanged += classComboBox_SelectedIndexChanged;
             // 
             // panel2
             // 
@@ -176,7 +178,7 @@
             groupBox2.Controls.Add(panel8);
             groupBox2.Controls.Add(objectNameTextBox);
             groupBox2.Controls.Add(label4);
-            groupBox2.Location = new Point(323, 42);
+            groupBox2.Location = new Point(13, 274);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(242, 253);
             groupBox2.TabIndex = 5;
@@ -210,6 +212,7 @@
             objectComboBox.Name = "objectComboBox";
             objectComboBox.Size = new Size(236, 23);
             objectComboBox.TabIndex = 1;
+            objectComboBox.SelectedIndexChanged += objectComboBox_SelectedIndexChanged;
             // 
             // panel5
             // 
@@ -274,10 +277,19 @@
             label4.TabIndex = 12;
             label4.Text = "新檔檔名:";
             // 
+            // panel9
+            // 
+            panel9.BackColor = SystemColors.ButtonHighlight;
+            panel9.Location = new Point(269, 0);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(1315, 861);
+            panel9.TabIndex = 6;
+            // 
             // SelectDiagramTypeUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(panel9);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Name = "SelectDiagramTypeUserControl";
@@ -314,5 +326,6 @@
         private Panel panel8;
         private TextBox objectNameTextBox;
         private Label label4;
+        private Panel panel9;
     }
 }
