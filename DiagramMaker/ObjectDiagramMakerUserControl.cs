@@ -15,13 +15,16 @@ namespace DiagramMaker
     public partial class ObjectDiagramMakerUserControl : UserControl
     {
         private int _canva_id;
-        public ObjectDiagramMakerUserControl(int canva_id)
+        private DiagramMakerForm _form;
+        private int _userId;
+        private PaintEventHandler _paintHandler;
+        public ObjectDiagramMakerUserControl(int canva_id , DiagramMakerForm diagramMakerForm , int userId)
         {
             InitializeComponent();
             _canva_id = canva_id;
+            _form = diagramMakerForm;
+            _userId = userId;
         }
-
-        private PaintEventHandler _paintHandler;
 
         private void ObjectDiagramMakerUserControl_Load(object sender, EventArgs e)
         {
@@ -246,6 +249,12 @@ namespace DiagramMaker
         private void button2_Click(object sender, EventArgs e)
         {
             SavePanelAsPng(panel2);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            SelectDiagramTypeUserControl selectDiagramTypeUserControl = new SelectDiagramTypeUserControl(_userId,_form);
+            _form.ChangeUserControl(selectDiagramTypeUserControl);
         }
     }
 }

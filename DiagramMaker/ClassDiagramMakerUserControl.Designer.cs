@@ -29,17 +29,19 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            button2 = new Button();
             button5 = new Button();
             button4 = new Button();
             button3 = new Button();
             button1 = new Button();
             panel2 = new Panel();
-            button2 = new Button();
+            button6 = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(button6);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(button5);
             panel1.Controls.Add(button4);
@@ -47,18 +49,27 @@
             panel1.Controls.Add(button1);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(4, 4, 4, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(346, 1091);
+            panel1.Size = new Size(269, 861);
             panel1.TabIndex = 0;
+            // 
+            // button2
+            // 
+            button2.Dock = DockStyle.Bottom;
+            button2.Location = new Point(0, 803);
+            button2.Name = "button2";
+            button2.Size = new Size(269, 58);
+            button2.TabIndex = 5;
+            button2.Text = "匯出圖表";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button5
             // 
             button5.Dock = DockStyle.Top;
-            button5.Location = new Point(0, 219);
-            button5.Margin = new Padding(4, 4, 4, 4);
+            button5.Location = new Point(0, 174);
             button5.Name = "button5";
-            button5.Size = new Size(346, 73);
+            button5.Size = new Size(269, 58);
             button5.TabIndex = 4;
             button5.Text = "刪除relationship";
             button5.UseVisualStyleBackColor = true;
@@ -67,10 +78,9 @@
             // button4
             // 
             button4.Dock = DockStyle.Top;
-            button4.Location = new Point(0, 146);
-            button4.Margin = new Padding(4, 4, 4, 4);
+            button4.Location = new Point(0, 116);
             button4.Name = "button4";
-            button4.Size = new Size(346, 73);
+            button4.Size = new Size(269, 58);
             button4.TabIndex = 3;
             button4.Text = "新增relationship";
             button4.UseVisualStyleBackColor = true;
@@ -79,10 +89,9 @@
             // button3
             // 
             button3.Dock = DockStyle.Top;
-            button3.Location = new Point(0, 73);
-            button3.Margin = new Padding(4, 4, 4, 4);
+            button3.Location = new Point(0, 58);
             button3.Name = "button3";
-            button3.Size = new Size(346, 73);
+            button3.Size = new Size(269, 58);
             button3.TabIndex = 2;
             button3.Text = "刪除class";
             button3.UseVisualStyleBackColor = true;
@@ -92,9 +101,8 @@
             // 
             button1.Dock = DockStyle.Top;
             button1.Location = new Point(0, 0);
-            button1.Margin = new Padding(4, 4, 4, 4);
             button1.Name = "button1";
-            button1.Size = new Size(346, 73);
+            button1.Size = new Size(269, 58);
             button1.TabIndex = 0;
             button1.Text = "新增class";
             button1.UseVisualStyleBackColor = true;
@@ -103,33 +111,30 @@
             // panel2
             // 
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(346, 0);
-            panel2.Margin = new Padding(4, 4, 4, 4);
+            panel2.Location = new Point(269, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1691, 1091);
+            panel2.Size = new Size(1315, 861);
             panel2.TabIndex = 1;
             // 
-            // button2
+            // button6
             // 
-            button2.Dock = DockStyle.Bottom;
-            button2.Location = new Point(0, 1018);
-            button2.Margin = new Padding(4);
-            button2.Name = "button2";
-            button2.Size = new Size(346, 73);
-            button2.TabIndex = 5;
-            button2.Text = "匯出圖表";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            button6.Dock = DockStyle.Bottom;
+            button6.Location = new Point(0, 745);
+            button6.Name = "button6";
+            button6.Size = new Size(269, 58);
+            button6.TabIndex = 7;
+            button6.Text = "回到主選單";
+            button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
             // 
             // ClassDiagramMakerUserControl
             // 
-            AutoScaleDimensions = new SizeF(9F, 19F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Margin = new Padding(4, 4, 4, 4);
             Name = "ClassDiagramMakerUserControl";
-            Size = new Size(2037, 1091);
+            Size = new Size(1584, 861);
             Load += ClassDiagramMakerUserControl_Load;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
@@ -144,5 +149,6 @@
         private Button button1;
         private Panel panel2;
         private Button button2;
+        private Button button6;
     }
 }

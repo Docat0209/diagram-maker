@@ -76,7 +76,7 @@ namespace DiagramMaker
             {
                 dynamic selectedItem = classComboBox.SelectedItem;
                 int selectedId = selectedItem.Id;
-                ClassDiagramMakerUserControl userControl = new ClassDiagramMakerUserControl(selectedId);
+                ClassDiagramMakerUserControl userControl = new ClassDiagramMakerUserControl(selectedId , _form , _userId);
                 _form.ChangeUserControl(userControl);
             }
             else
@@ -88,14 +88,14 @@ namespace DiagramMaker
         private void createNewClassButton_Click(object sender, EventArgs e)
         {
             int canvaId = ClassDiagramService.CreateNewClassCanva(classNameTextBox.Text, _userId);
-            ClassDiagramMakerUserControl userControl = new ClassDiagramMakerUserControl(canvaId);
+            ClassDiagramMakerUserControl userControl = new ClassDiagramMakerUserControl(canvaId , _form , _userId);
             _form.ChangeUserControl(userControl);
         }
 
         private void createNewObjectButton_Click(object sender, EventArgs e)
         {
             int canvaId = ObjectDiagramService.CreateNewObjectCanva(objectNameTextBox.Text, _userId);
-            ObjectDiagramMakerUserControl userControl = new ObjectDiagramMakerUserControl(canvaId);
+            ObjectDiagramMakerUserControl userControl = new ObjectDiagramMakerUserControl(canvaId , _form, _userId);
             _form.ChangeUserControl(userControl);
         }
 
@@ -105,7 +105,7 @@ namespace DiagramMaker
             {
                 dynamic selectedItem = objectComboBox.SelectedItem;
                 int selectedId = selectedItem.Id;
-                ObjectDiagramMakerUserControl userControl = new ObjectDiagramMakerUserControl(selectedId);
+                ObjectDiagramMakerUserControl userControl = new ObjectDiagramMakerUserControl(selectedId , _form , _userId);
                 _form.ChangeUserControl(userControl);
             }
             else

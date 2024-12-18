@@ -12,11 +12,15 @@ namespace DiagramMaker
     {
         private int _canva_id;
         private PaintEventHandler _paintHandler;
+        private DiagramMakerForm _diagramMakerForm;
+        private int _userId;
 
-        public ClassDiagramMakerUserControl(int canva_id)
+        public ClassDiagramMakerUserControl(int canva_id, DiagramMakerForm diagramMakerForm, int userId)
         {
             InitializeComponent();
             _canva_id = canva_id;
+            _diagramMakerForm=diagramMakerForm;
+            _userId=userId;
         }
 
         private void ClassDiagramMakerUserControl_Load(object sender, EventArgs e)
@@ -455,6 +459,12 @@ namespace DiagramMaker
         private void button2_Click(object sender, EventArgs e)
         {
             SavePanelAsPng(panel2);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            SelectDiagramTypeUserControl selectDiagramTypeUserControl = new SelectDiagramTypeUserControl(_userId , _diagramMakerForm);
+            _diagramMakerForm.ChangeUserControl(selectDiagramTypeUserControl);
         }
     }
 }
