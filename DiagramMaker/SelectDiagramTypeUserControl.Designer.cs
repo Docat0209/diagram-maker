@@ -50,6 +50,7 @@
             panel8 = new Panel();
             objectNameTextBox = new TextBox();
             label4 = new Label();
+            panel11 = new Panel();
             panel9 = new Panel();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -277,13 +278,22 @@
             label4.TabIndex = 12;
             label4.Text = "新檔檔名:";
             // 
+            // panel11
+            // 
+            panel11.Dock = DockStyle.Left;
+            panel11.Location = new Point(0, 0);
+            panel11.Name = "panel11";
+            panel11.Size = new Size(269, 861);
+            panel11.TabIndex = 6;
+            // 
             // panel9
             // 
-            panel9.BackColor = SystemColors.ButtonHighlight;
+            panel9.BackColor = SystemColors.Control;
+            panel9.Dock = DockStyle.Fill;
             panel9.Location = new Point(269, 0);
             panel9.Name = "panel9";
             panel9.Size = new Size(1315, 861);
-            panel9.TabIndex = 6;
+            panel9.TabIndex = 7;
             // 
             // SelectDiagramTypeUserControl
             // 
@@ -292,6 +302,7 @@
             Controls.Add(panel9);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
+            Controls.Add(panel11);
             Name = "SelectDiagramTypeUserControl";
             Size = new Size(1584, 861);
             Load += SelectDiagramTypeUserControl_Load;
@@ -326,6 +337,7 @@
         private Panel panel8;
         private TextBox objectNameTextBox;
         private Label label4;
+        private Panel panel11;
         private Panel panel9;
     }
 }
